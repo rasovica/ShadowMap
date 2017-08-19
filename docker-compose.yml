@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "80:80"
+    volumes:
+      - "./public_html/:/var/www/example.com/public_html/"
+  redis:
+    image: "redis:alpine"
