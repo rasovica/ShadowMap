@@ -12,15 +12,15 @@
     <div id="map"></div>
     <div class="footer">
         <ul>
-            <li>About</li>
-            <li>Api</li>
-            <li>Credits</li>
-            <li>Help</li>
+            <li><a href="#home">About</a></li>
+            <li><a href="#api">Api</a></li>
+            <li><a href="#credits">Credits</a></li>
+            <li><a href="#help">Help</a></li>
         </ul>
     </div>
     <script>
         var map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('http://192.168.1.193:8080/styles/dark-matter/{z}/{x}/{y}.png', {
+        L.tileLayer('http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
         }).addTo(map);
     </script>
 </body>

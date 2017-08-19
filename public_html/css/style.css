@@ -9,7 +9,7 @@
 body{
     margin: 0;
     padding: 0;
-    body { font-family: 'Open Sans', sans-serif}
+    font-family: 'Open Sans', sans-serif;
 }
 
 #map{
@@ -18,37 +18,43 @@ body{
 
 .footer{
     position: fixed;
-    z-index: 1000;
-    bottom: 0;
-    background-color:rgba(155,155,155,.9);
-    border-radius: 15px 15px 0 0;
+    background-color: rgba(155,155,155,.9);
     border: solid 2px #fafafa;
     border-bottom: 0;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: calc(100% - 100%/2 - 150px);
     display: block;
-margin-left: 50vw;
-    padding-bottom: 1em;
+    width: 300px;
+    z-index:400;
 }
-
-.footer ul{
-    padding: 10px;
-    margin: 0;
-}
-
-.footer li{
-    float: left;
+ul {
     list-style-type: none;
-    border-right: solid 2px black;
-    padding-right: 0.5vw;
-    padding-left: 0.5vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    width:75px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.1);
+    transition: 0.5s all;
+}
+li a:hover:not(.active) {
+    background-color: #111;
     text-decoration: underline;
+    text-decoration-color: tomato;
 }
 
-.footer li:first-child{
-    padding-left: 0;
-}
-
-.footer li:last-child {
-    border: 0;
-    padding-right: 0;
+.active {
+    background-color: #4CAF50;
 }
