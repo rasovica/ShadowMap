@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('Open-Sans-Regular'),
+  url('fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    body { font-family: 'Open Sans', sans-serif}
+}
+
+#map{
+    height: 100vh;
+}
+
+.footer{
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    background-color:rgba(155,155,155,.9);
+    border-radius: 15px 15px 0 0;
+    border: solid 2px #fafafa;
+    border-bottom: 0;
+    transform: translateX(-50%);
+    display: block;
+margin-left: 50vw;
+    padding-bottom: 1em;
+}
+
+.footer ul{
+    padding: 10px;
+    margin: 0;
+}
+
+.footer li{
+    float: left;
+    list-style-type: none;
+    border-right: solid 2px black;
+    padding-right: 0.5vw;
+    padding-left: 0.5vw;
+    text-decoration: underline;
+}
+
+.footer li:first-child{
+    padding-left: 0;
+}
+
+.footer li:last-child {
+    border: 0;
+    padding-right: 0;
+}

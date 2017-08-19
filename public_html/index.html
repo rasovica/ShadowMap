@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>ShadowMap</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-    crossorigin=""/>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-    crossorigin=""></script>
-    <script src="leaflet.edgebuffer.js"></script>
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet.edgebuffer.js"></script>
 </head>
 <body>
     <div id="map"></div>
+    <div class="footer">
+        <ul>
+            <li>About</li>
+            <li>Api</li>
+            <li>Credits</li>
+            <li>Help</li>
+        </ul>
+    </div>
     <script>
         var map = L.map('map').setView([51.505, -0.09], 13);
-
         L.tileLayer('http://192.168.1.193:8080/styles/dark-matter/{z}/{x}/{y}.png', {
-            buffer: 8
         }).addTo(map);
-
-        L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
     </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
       var pixelBounds = L.EdgeBuffer.previousMethods.getTiledPixelBounds.call(this, center, zoom, tileZoom);
 
       // Default is to buffer one tiles beyond the pixel bounds (edgeBufferTiles = 1).
-      var edgeBufferTiles = 1;
+      var edgeBufferTiles = 2;
       if ((this.options.edgeBufferTiles !== undefined) && (this.options.edgeBufferTiles !== null)) {
         edgeBufferTiles = this.options.edgeBufferTiles;
       }
