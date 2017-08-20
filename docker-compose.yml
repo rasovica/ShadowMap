@@ -8,3 +8,5 @@ services:
       - "./public_html/:/var/www/example.com/public_html/"
   redis:
     image: "redis:alpine"
+  freegeoip:
+    image: fiorix/freegeoip
