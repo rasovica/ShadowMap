@@ -8,7 +8,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 } else {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
-$ip = "62.210.103.135";
+$ip = "86.58.69.133";
 echo file_get_contents("http://freegeoip:8080/json/".$ip);
 
 ?>
