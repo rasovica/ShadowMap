@@ -76,6 +76,13 @@ body{
     border: solid 2px #fafafa;
     border-right: 0;
     color: white;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
 }
 
 .sidepanel h1{
@@ -103,4 +110,8 @@ body{
 
 .active {
     background-color: #4CAF50;
+}
+
+.hidden{
+    display: none;
 }

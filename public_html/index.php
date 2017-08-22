@@ -14,17 +14,30 @@
 </head>
 <body>
     <div id="map"></div>
-    <div class="sidepanel">
-        <h1>Help</h1>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet nulla nunc. Duis lobortis tempus tortor vel porttitor. Aenean pharetra nulla a felis scelerisque eleifend. Nullam a nulla libero. Vestibulum sit amet magna in mauris lacinia facilisis. Cras tincidunt justo non lobortis commodo. Nunc vulputate metus nec erat pulvinar, id ornare enim consectetur. Sed commodo magna eu sodales tincidunt. Aliquam non efficitur metus. Nam ut ornare erat.</p>
-        <div class="close"></div>
+    <div class="sidepanel" id="panel">
+        <div id="about-panel" class="hidden">
+            <h1>About</h1>
+            <p>This is a map of all security cameras so you can avoid them and shit</p>
+            <div class="close" id="close"></div>
+        </div>
+        <div id="api-panel">
+
+        </div>
+        <div id="credits-panel">
+
+        </div>
+        <div id="help-panel">
+            <h1>Help</h1>
+            <p>Add a new camera by pressing shift and click draging into the direction it is pointing.</p>
+            <div class="close" id="close"></div>
+        </div>
     </div>
     <div class="footer">
         <ul>
-            <li><a href="#home">About</a></li>
-            <li><a href="#api">Api</a></li>
-            <li><a href="#credits">Credits</a></li>
-            <li><a href="#help">Help</a></li>
+            <li><a id="about">About</a></li>
+            <li><a id="api">Api</a></li>
+            <li><a id="credits">Credits</a></li>
+            <li><a id="help">Help</a></li>
         </ul>
     </div>
     <script>
@@ -50,6 +63,15 @@
             return degree*Math.PI/180;
         }
         $(document).ready(function(){
+            $("#close").click(function() {
+                $("#panel").animate({
+                    right: "-400",
+                    }, 500, function() {
+                });
+            });
+
+            $("#about").click()
+
             var map = L.map('map');
             $.ajax({
                 type: 'POST',
@@ -79,7 +101,9 @@
                 }).addTo(map);
 
                 map.on('mousemove', function (e) {
-                    camera.setRadius(getDistance([ev.detail.lat, ev.detail.lng], [e.latlng.lat, e.latlng.lng]));
+                    if(getDistance([ev.detail.lat, ev.detail.lng], [e.latlng.lat, e.latlng.lng])<=100){
+                        camera.setRadius(getDistance([ev.detail.lat, ev.detail.lng], [e.latlng.lat, e.latlng.lng]));
+                    }
                     camera.setDirection(getAngle([ev.detail.lat, ev.detail.lng], [e.latlng.lat, e.latlng.lng]) ,90);
                 });
 
