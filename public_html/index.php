@@ -63,23 +63,53 @@
             return degree*Math.PI/180;
         }
         $(document).ready(function(){
-            $("#close").click(function() {
+            $("#panel").on("click", "#close",function() {
                 $("#panel").animate({
                     right: "-400",
                     }, 500, function() {
                 });
             });
 
-            $("#about").click()
+            $("#about").click(function(){
+                $("#help-panel").hide();
+                $("#about-panel").show();
+                $("#panel").animate({
+                    right: "-0",
+                    }, 500, function() {
+                });
+            });
 
-            var map = L.map('map');
+            $("#api").click(function(){
+                $("#panel").animate({
+                    right: "-0",
+                    }, 500, function() {
+                });
+            });
+
+            $("#credits").click(function(){
+                $("#panel").animate({
+                    right: "0",
+                    }, 500, function() {
+                });
+            });
+
+            $("#help").click(function(){
+                $("#about-panel").hide();
+                $("#help-panel").show();
+                $("#panel").animate({
+                    right: "0",
+                    }, 500, function() {
+                });
+            });
+
+            var map = L.map('map', {attributionControl: false});
             $.ajax({
                 type: 'POST',
                 url: "geoip.php",
                 success: function(result){
                     var pos = [result.latitude, result.longitude];
                     map.setView(pos, 13);
-                    L.tileLayer('http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png', {maxNativeZoom: "18", maxZoom: "20"}).addTo(map);
+                    L.tileLayer('http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png', {maxNativeZoom: "18", maxZoom: "18", minZoom: "6"}).addTo(map);
 
                     map.addControl( new L.Control.Search({
                         url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
