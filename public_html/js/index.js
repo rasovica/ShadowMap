@@ -89,7 +89,11 @@ $(document).ready(function(){
         type: 'POST',
         url: "geoip.php",
         success: function(result){
-            var pos = [result.latitude, result.longitude];
+            if(result.latitude == 0 && result.longitude == 0){
+                var pos = [46.5547, 15.6467];
+            }else{
+                var pos = [result.latitude, result.longitude];
+            }
             map.setView(pos, 13);
             map.setZoom(14);
             L.tileLayer('http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png', {maxNativeZoom: "18", maxZoom: "18", minZoom: "6"}).addTo(map);
@@ -133,6 +137,9 @@ $(document).ready(function(){
 
             map.on('mouseup',function(e){
                 map.removeEventListener('mousemove');
+            });
+            $("#angle").change(function(){
+                camera.setDirection(window.direction, $("#angle").val());
             });
             $("#add").click(function(){
                 data = {

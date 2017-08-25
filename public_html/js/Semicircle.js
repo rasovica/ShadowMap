@@ -74,11 +74,14 @@
             }
             this.options.startAngle = direction - (degrees / 2);
             this.options.stopAngle = direction + (degrees / 2);
-
+            this.degrees = degrees;
             return this.redraw();
         },
         getDirection: function () {
             return this.stopAngle() - (this.stopAngle() - this.startAngle()) / 2;
+        },
+        getDegrees: function(){
+            return this.degrees;
         },
 
         isSemicircle: function () {
