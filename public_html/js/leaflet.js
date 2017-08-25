@@ -11378,6 +11378,23 @@ var TileLayer = GridLayer.extend({
 		*/
 		tile.setAttribute('role', 'presentation');
 
+        if(coords.z == 14){
+            $.ajax({
+                type: "POST",
+                url: "get_tile.php",
+                data: {x: coords.x, y: coords.y},
+                success: function(data){
+                    var dataLength = data.length;
+                    for (var i = 0; i < dataLength; i++) {
+                        var camera_data = JSON.parse(data[i]);
+                        var camera = L.semiCircle({lat: camera_data.lat, lng: camera_data.lng}, {radius: parseFloat(camera_data.r), color: '#DC143C'}).setDirection(parseFloat(camera_data.d), parseFloat(camera_data.a)).on("click", function (e) {
+                            alert(camera_data.n);
+                        }).addTo(window.map);
+                    }
+                },
+            });
+        }
+
 		tile.src = this.getTileUrl(coords);
 
 		return tile;

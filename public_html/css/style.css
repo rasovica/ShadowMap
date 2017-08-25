@@ -115,3 +115,17 @@ body{
 .hidden{
     display: none;
 }
+
+#new-camera-panel{
+    padding-right: 10px;
+}
+
+#new-camera-panel input{
+    width: 250px;
+    margin: 10px;
+}
+
+#new-camera-panel button{
+    width: 270px;
+    margin: 10px;
+}

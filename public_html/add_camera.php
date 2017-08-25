@@ -1,8 +1,20 @@
 <?php
-   //Connecting to Redis server on localhost
-   $redis = new Redis();
-   $redis->connect("redis", 6379);
-   echo "Connection to server sucessfully";
-   //check whether server is running or not
-   echo "Server is running: ".$redis->ping();
+    header('Content-Type: application/json');
+    $redis = new Redis();
+    if($redis->pconnect('redis')){
+        $curr_id = $redis->incr('curr_camera_id')-1;
+        $data = Array();
+        $data["lat"] = $_POST["lat"];
+        $data["lng"] = $_POST["lng"];
+        $data["n"] = $_POST["n"];
+        $data["a"] = $_POST["a"];
+        $data["u"] = $_POST["u"];
+        $data["r"] = $_POST["r"];
+        $data["d"] = $_POST["d"];
+        $redis->lPush($_POST["x"].":".$_POST["y"], $curr_id);
+        $redis->set($curr_id, json_encode($data));
+        echo "{\"success\": \"Camera added\"}";
+    }else{
+        echo "{\"error\": \"Database is down\"}";
+    }
 ?>
