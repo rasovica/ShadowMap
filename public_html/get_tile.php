@@ -1,5 +1,6 @@
 <?php
     header('Content-Type: application/json');
+    header('Vary: Accept-Encoding');
     $redis = new Redis();
     if($redis->pconnect('redis')){
         $cameras = Array();

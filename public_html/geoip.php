@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+header('Vary: Accept-Encoding');
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
